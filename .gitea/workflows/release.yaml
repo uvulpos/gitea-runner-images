@@ -45,11 +45,11 @@ jobs:
             linux/arm64
           pull: true
           push: true
-          args:
-            BASE_IMAGE_TAG: act-22.04
-            IMAGE_VERSION: ${{ steps.meta.outputs.IMAGE_VERSION }}
-            IMAGE_CREATED: ${{ steps.meta.outputs.IMAGE_CREATED }}
-            IMAGE_REVISION: ${{ steps.meta.outputs.IMAGE_REVISION }}
+          build-args: |
+            BASE_IMAGE_TAG=act-22.04
+            IMAGE_VERSION=${{ steps.meta.outputs.IMAGE_VERSION }}
+            IMAGE_CREATED=${{ steps.meta.outputs.IMAGE_CREATED }}
+            IMAGE_REVISION=${{ steps.meta.outputs.IMAGE_REVISION }}
           tags: |
             gitea/runner-images:ubuntu-22.04
             gitea/runner-images:ubuntu-22.04-${{ steps.meta.outputs.IMAGE_VERSION }}
@@ -65,11 +65,11 @@ jobs:
             linux/arm64
           pull: true
           push: true
-          args:
-            BASE_IMAGE_TAG: act-20.04
-            IMAGE_VERSION: ${{ steps.meta.outputs.IMAGE_VERSION }}
-            IMAGE_CREATED: ${{ steps.meta.outputs.IMAGE_CREATED }}
-            IMAGE_REVISION: ${{ steps.meta.outputs.IMAGE_REVISION }}
+          build-args: |
+            BASE_IMAGE_TAG=act-20.04
+            IMAGE_VERSION=${{ steps.meta.outputs.IMAGE_VERSION }}
+            IMAGE_CREATED=${{ steps.meta.outputs.IMAGE_CREATED }}
+            IMAGE_REVISION=${{ steps.meta.outputs.IMAGE_REVISION }}
           tags: |
             gitea/runner-images:ubuntu-20.04
             gitea/runner-images:ubuntu-20.04-${{ steps.meta.outputs.IMAGE_VERSION }}
@@ -84,11 +84,11 @@ jobs:
             linux/arm64
           pull: true
           push: true
-          args:
-            BASE_IMAGE_TAG: 20-bookworm
-            IMAGE_VERSION: ${{ steps.meta.outputs.IMAGE_VERSION }}
-            IMAGE_CREATED: ${{ steps.meta.outputs.IMAGE_CREATED }}
-            IMAGE_REVISION: ${{ steps.meta.outputs.IMAGE_REVISION }}
+          build-args: |
+            BASE_IMAGE_TAG=20-bookworm
+            IMAGE_VERSION=${{ steps.meta.outputs.IMAGE_VERSION }}
+            IMAGE_CREATED=${{ steps.meta.outputs.IMAGE_CREATED }}
+            IMAGE_REVISION=${{ steps.meta.outputs.IMAGE_REVISION }}
           tags: |
             gitea/runner-images:ubuntu-slim-22.04
             gitea/runner-images:ubuntu-slim-22.04-${{ steps.meta.outputs.IMAGE_VERSION }}
@@ -104,11 +104,11 @@ jobs:
             linux/arm64
           pull: true
           push: true
-          args:
-            BASE_IMAGE_TAG: 20-bullseye
-            IMAGE_VERSION: ${{ steps.meta.outputs.IMAGE_VERSION }}
-            IMAGE_CREATED: ${{ steps.meta.outputs.IMAGE_CREATED }}
-            IMAGE_REVISION: ${{ steps.meta.outputs.IMAGE_REVISION }}
+          build-args: |
+            BASE_IMAGE_TAG=20-bullseye
+            IMAGE_VERSION=${{ steps.meta.outputs.IMAGE_VERSION }}
+            IMAGE_CREATED=${{ steps.meta.outputs.IMAGE_CREATED }}
+            IMAGE_REVISION=${{ steps.meta.outputs.IMAGE_REVISION }}
           tags: |
             gitea/runner-images:ubuntu-slim-20.04
             gitea/runner-images:ubuntu-slim-20.04-${{ steps.meta.outputs.IMAGE_VERSION }}
