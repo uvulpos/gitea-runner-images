@@ -2,6 +2,8 @@
 
 Official docker images used by [act_runner](https://gitea.com/gitea/act_runner) to run workflows.
 
+You can find the images on [Docker Hub](https://hub.docker.com/r/gitea/runner-images).
+
 Currently, we have not chosen to build the image ourselves, as [catthehacker/docker_images](https://github.com/catthehacker/docker_images) has done an excellent job of this.
 We don't need to reinvent the wheel.
 
