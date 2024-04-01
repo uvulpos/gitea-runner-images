@@ -112,3 +112,42 @@ jobs:
           tags: |
             gitea/runner-images:ubuntu-slim-20.04
             gitea/runner-images:ubuntu-slim-20.04-${{ steps.meta.outputs.IMAGE_VERSION }}
+
+      - name: Build and push full 22.04
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: dockerfiles/ubuntu.dockerfile
+          platforms: |
+            linux/amd64
+            linux/arm64
+          pull: true
+          push: true
+          build-args: |
+            BASE_IMAGE_TAG=full-22.04
+            IMAGE_VERSION=${{ steps.meta.outputs.IMAGE_VERSION }}
+            IMAGE_CREATED=${{ steps.meta.outputs.IMAGE_CREATED }}
+            IMAGE_REVISION=${{ steps.meta.outputs.IMAGE_REVISION }}
+          tags: |
+            gitea/runner-images:ubuntu-22.04-full
+            gitea/runner-images:ubuntu-22.04-full-${{ steps.meta.outputs.IMAGE_VERSION }}
+            gitea/runner-images:ubuntu-latest-full
+
+      - name: Build and push full 20.04
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: dockerfiles/ubuntu.dockerfile
+          platforms: |
+            linux/amd64
+            linux/arm64
+          pull: true
+          push: true
+          build-args: |
+            BASE_IMAGE_TAG=full-20.04
+            IMAGE_VERSION=${{ steps.meta.outputs.IMAGE_VERSION }}
+            IMAGE_CREATED=${{ steps.meta.outputs.IMAGE_CREATED }}
+            IMAGE_REVISION=${{ steps.meta.outputs.IMAGE_REVISION }}
+          tags: |
+            gitea/runner-images:ubuntu-20.04-full
+            gitea/runner-images:ubuntu-20.04-${{ steps.meta.outputs.IMAGE_VERSION }}
