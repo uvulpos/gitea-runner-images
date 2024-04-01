@@ -32,9 +32,9 @@ Their size is much smaller, which is friendly to disk-space constrained runners.
 
 | Tag                                      | Base               | Size                                                                                                | Version                                                                            |
 |------------------------------------------|--------------------|-----------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------|
-| `gitea/runner-images:ubuntu-latest-slim` | `node:20-bookworm` | ![size](https://img.shields.io/docker/image-size/gitea/runner-images/ubuntu-latest-slim?label=size) | ![version](https://img.shields.io/docker/v/gitea/runner-images/ubuntu-latest-slim) |
-| `gitea/runner-images:ubuntu-22.04-slim`  | `node:20-bookworm` | ![size](https://img.shields.io/docker/image-size/gitea/runner-images/ubuntu-22.04-slim?label=size)  | ![version](https://img.shields.io/docker/v/gitea/runner-images/ubuntu-22.04-slim)  |
-| `gitea/runner-images:ubuntu-20.04-slim`  | `node:20-bullseye` | ![size](https://img.shields.io/docker/image-size/gitea/runner-images/ubuntu-20.04-slim?label=size)  | ![version](https://img.shields.io/docker/v/gitea/runner-images/ubuntu-20.04-slim)  |
+| `gitea/runner-images:ubuntu-latest-slim` | `node:20-bookworm` | ![size](https://img.shields.io/docker/image-size/gitea/runner-images/ubuntu-slim-latest?label=size) | ![version](https://img.shields.io/docker/v/gitea/runner-images/ubuntu-slim-latest) |
+| `gitea/runner-images:ubuntu-22.04-slim`  | `node:20-bookworm` | ![size](https://img.shields.io/docker/image-size/gitea/runner-images/ubuntu-slim-22.04?label=size)  | ![version](https://img.shields.io/docker/v/gitea/runner-images/ubuntu-slim-22.04)  |
+| `gitea/runner-images:ubuntu-20.04-slim`  | `node:20-bullseye` | ![size](https://img.shields.io/docker/image-size/gitea/runner-images/ubuntu-slim-20.04?label=size)  | ![version](https://img.shields.io/docker/v/gitea/runner-images/ubuntu-slim-20.04)  |
 
 ### Full images
 
@@ -43,6 +43,6 @@ They have huge sizes, but are useful if you need to run workflows in a GitHub Ac
 
 | Tag                                      | Base                              | Size                                                                                                | Version                                                                            |
 |------------------------------------------|-----------------------------------|-----------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------|
-| `gitea/runner-images:ubuntu-latest-full` | `catthehacker/ubuntu:full-latest` | ![size](https://img.shields.io/docker/image-size/gitea/runner-images/ubuntu-latest-full?label=size) | ![version](https://img.shields.io/docker/v/gitea/runner-images/ubuntu-latest-full) |
-| `gitea/runner-images:ubuntu-22.04-full`  | `catthehacker/ubuntu:full-22.04`  | ![size](https://img.shields.io/docker/image-size/gitea/runner-images/ubuntu-22.04-full?label=size)  | ![version](https://img.shields.io/docker/v/gitea/runner-images/ubuntu-22.04-full)  |
-| `gitea/runner-images:ubuntu-20.04-full`  | `catthehacker/ubuntu:full-20.04`  | ![size](https://img.shields.io/docker/image-size/gitea/runner-images/ubuntu-20.04-full?label=size)  | ![version](https://img.shields.io/docker/v/gitea/runner-images/ubuntu-20.04-full)  |
+| `gitea/runner-images:ubuntu-latest-full` | `catthehacker/ubuntu:full-latest` | ![size](https://img.shields.io/docker/image-size/gitea/runner-images/ubuntu-full-latest?label=size) | ![version](https://img.shields.io/docker/v/gitea/runner-images/ubuntu-full-latest) |
+| `gitea/runner-images:ubuntu-22.04-full`  | `catthehacker/ubuntu:full-22.04`  | ![size](https://img.shields.io/docker/image-size/gitea/runner-images/ubuntu-full-22.04?label=size)  | ![version](https://img.shields.io/docker/v/gitea/runner-images/ubuntu-full-22.04)  |
+| `gitea/runner-images:ubuntu-20.04-full`  | `catthehacker/ubuntu:full-20.04`  | ![size](https://img.shields.io/docker/image-size/gitea/runner-images/ubuntu-full-20.04?label=size)  | ![version](https://img.shields.io/docker/v/gitea/runner-images/ubuntu-full-20.04)  |
