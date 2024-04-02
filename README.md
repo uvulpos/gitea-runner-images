@@ -26,15 +26,15 @@ They contain most of the tools needed to run workflows and are always recommende
 
 ### Slim images
 
-Slim images are based on `node:20-bookworm`.
+Slim images are based on `node:20-*-slim`.
 They contain Node.js to run basic workflows and set up more development tools if needed.
 Their size is much smaller, which is friendly to disk-space constrained runners.
 
-| Tag                                      | Base               | Size                                                                                                | Version                                                                            |
-|------------------------------------------|--------------------|-----------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------|
-| `gitea/runner-images:ubuntu-latest-slim` | `node:20-bookworm` | ![size](https://img.shields.io/docker/image-size/gitea/runner-images/ubuntu-slim-latest?label=size) | ![version](https://img.shields.io/docker/v/gitea/runner-images/ubuntu-slim-latest) |
-| `gitea/runner-images:ubuntu-22.04-slim`  | `node:20-bookworm` | ![size](https://img.shields.io/docker/image-size/gitea/runner-images/ubuntu-slim-22.04?label=size)  | ![version](https://img.shields.io/docker/v/gitea/runner-images/ubuntu-slim-22.04)  |
-| `gitea/runner-images:ubuntu-20.04-slim`  | `node:20-bullseye` | ![size](https://img.shields.io/docker/image-size/gitea/runner-images/ubuntu-slim-20.04?label=size)  | ![version](https://img.shields.io/docker/v/gitea/runner-images/ubuntu-slim-20.04)  |
+| Tag                                      | Base                    | Size                                                                                                | Version                                                                            |
+|------------------------------------------|-------------------------|-----------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------|
+| `gitea/runner-images:ubuntu-latest-slim` | `node:20-bookworm-slim` | ![size](https://img.shields.io/docker/image-size/gitea/runner-images/ubuntu-slim-latest?label=size) | ![version](https://img.shields.io/docker/v/gitea/runner-images/ubuntu-slim-latest) |
+| `gitea/runner-images:ubuntu-22.04-slim`  | `node:20-bookworm-slim` | ![size](https://img.shields.io/docker/image-size/gitea/runner-images/ubuntu-slim-22.04?label=size)  | ![version](https://img.shields.io/docker/v/gitea/runner-images/ubuntu-slim-22.04)  |
+| `gitea/runner-images:ubuntu-20.04-slim`  | `node:20-bullseye-slim` | ![size](https://img.shields.io/docker/image-size/gitea/runner-images/ubuntu-slim-20.04?label=size)  | ![version](https://img.shields.io/docker/v/gitea/runner-images/ubuntu-slim-20.04)  |
 
 ### Full images
 

@@ -88,7 +88,7 @@ jobs:
           push: true
           no-cache: true
           build-args: |
-            BASE_IMAGE_TAG=20-bookworm
+            BASE_IMAGE_TAG=20-bookworm-slim
             IMAGE_VERSION=${{ steps.meta.outputs.IMAGE_VERSION }}
             IMAGE_CREATED=${{ steps.meta.outputs.IMAGE_CREATED }}
             IMAGE_REVISION=${{ steps.meta.outputs.IMAGE_REVISION }}
@@ -109,7 +109,7 @@ jobs:
           push: true
           no-cache: true
           build-args: |
-            BASE_IMAGE_TAG=20-bullseye
+            BASE_IMAGE_TAG=20-bullseye-slim
             IMAGE_VERSION=${{ steps.meta.outputs.IMAGE_VERSION }}
             IMAGE_CREATED=${{ steps.meta.outputs.IMAGE_CREATED }}
             IMAGE_REVISION=${{ steps.meta.outputs.IMAGE_REVISION }}
