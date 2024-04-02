@@ -40,6 +40,7 @@ Their size is much smaller, which is friendly to disk-space constrained runners.
 
 Full images are based on `catthehacker/ubuntu:full-*`, which contains all tools provided by GitHub Actions runners.
 They have huge sizes, but are useful if you need to run workflows in a GitHub Actions compatible environment.
+Please note that full images support amd64 architecture only.
 
 | Tag                                      | Base                              | Size                                                                                                | Version                                                                            |
 |------------------------------------------|-----------------------------------|-----------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------|
