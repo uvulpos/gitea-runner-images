@@ -124,11 +124,11 @@ jobs:
 
       - name: Copy full 22.04
         run: |
-          skopeo copy -a docker://ghcr.io/catthehacker/ubuntu:ubuntu-22.04-full docker://gitea/runner-images:ubuntu-22.04-full
-          skopeo copy -a docker://ghcr.io/catthehacker/ubuntu:ubuntu-22.04-full docker://gitea/runner-images:ubuntu-22.04-full-${{ steps.meta.outputs.IMAGE_VERSION }}
-          skopeo copy -a docker://ghcr.io/catthehacker/ubuntu:ubuntu-22.04-full docker://gitea/runner-images:ubuntu-latest-full
+          skopeo copy -a docker://ghcr.io/catthehacker/ubuntu:22.04-full docker://gitea/runner-images:ubuntu-22.04-full
+          skopeo copy -a docker://ghcr.io/catthehacker/ubuntu:22.04-full docker://gitea/runner-images:ubuntu-22.04-full-${{ steps.meta.outputs.IMAGE_VERSION }}
+          skopeo copy -a docker://ghcr.io/catthehacker/ubuntu:22.04-full docker://gitea/runner-images:ubuntu-latest-full
 
       - name: Copy full 20.04
         run: |
-          skopeo copy -a docker://ghcr.io/catthehacker/ubuntu:ubuntu-20.04-full docker://gitea/runner-images:ubuntu-22.04-full
-          skopeo copy -a docker://ghcr.io/catthehacker/ubuntu:ubuntu-20.04-full docker://gitea/runner-images:ubuntu-22.04-full-${{ steps.meta.outputs.IMAGE_VERSION }}
+          skopeo copy -a docker://ghcr.io/catthehacker/ubuntu:20.04-full docker://gitea/runner-images:ubuntu-22.04-full
+          skopeo copy -a docker://ghcr.io/catthehacker/ubuntu:20.04-full docker://gitea/runner-images:ubuntu-22.04-full-${{ steps.meta.outputs.IMAGE_VERSION }}
