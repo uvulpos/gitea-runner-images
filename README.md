@@ -51,3 +51,28 @@ Please note that full images support amd64 architecture only.
 | [ubuntu-latest-full](https://hub.docker.com/r/gitea/runner-images/tags?name=ubuntu-latest-full&ordering=-name) | `catthehacker/ubuntu:full-latest` | ![size](https://img.shields.io/docker/image-size/gitea/runner-images/ubuntu-latest-full?label-full=size) | ![version](https://img.shields.io/docker/v/gitea/runner-images/ubuntu-latest-full) |
 | [ubuntu-22.04-full](https://hub.docker.com/r/gitea/runner-images/tags?name=ubuntu-22.04-full&ordering=-name)   | `catthehacker/ubuntu:full-22.04`  | ![size](https://img.shields.io/docker/image-size/gitea/runner-images/ubuntu-22.04-full?label-full=size)  | ![version](https://img.shields.io/docker/v/gitea/runner-images/ubuntu-22.04-full)  |
 | [ubuntu-20.04-full](https://hub.docker.com/r/gitea/runner-images/tags?name=ubuntu-20.04-full&ordering=-name)   | `catthehacker/ubuntu:full-20.04`  | ![size](https://img.shields.io/docker/image-size/gitea/runner-images/ubuntu-20.04-full?label-full=size)  | ![version](https://img.shields.io/docker/v/gitea/runner-images/ubuntu-20.04-full)  |
+
+## Migration
+
+If you have already installed a runner which uses `node:16-*` or `node:20-*` as default images, you can migrate to the new images by following the steps:
+
+1. Ensure your Gitea's version is v1.21.0 or later.
+2. Ensure your act_runner's version is v0.2.9 or later.
+3. Update your runner's configuration file like `config.yaml`:
+   ```yaml
+   # ...
+   
+   runner:
+     # ...
+     labels:
+       - "ubuntu-latest:docker://gitea/runner-images:ubuntu-latest"
+       - "ubuntu-22.04:docker://gitea/runner-images:ubuntu-22.04"
+       - "ubuntu-20.04:docker://gitea/runner-images:ubuntu-20.04"
+   
+   container:
+     # ...
+     force_pull: true
+   
+   # ...
+   ```
+4. Restart your runner.
