@@ -8,7 +8,7 @@ on:
       - main
 
 jobs:
-  release-image:
+  release-default:
     runs-on: ubuntu-latest
     container:
       image: gitea/runner-images:ubuntu-latest
@@ -31,9 +31,9 @@ jobs:
       - name: Get Meta
         id: meta
         run: |
-          echo IMAGE_CREATED=$(date -u +'%Y-%m-%dT%H:%M:%SZ') > $GITHUB_OUTPUT
-          echo IMAGE_VERSION=$(date -u +'v%y.%m.%d') >> $GITHUB_OUTPUT
-          echo IMAGE_REVISION=$(git rev-parse HEAD) >> $GITHUB_OUTPUT  
+          echo IMAGE_CREATED=$(date -u +'%Y-%m-%dT%H:%M:%SZ') | tee -a $GITHUB_OUTPUT
+          echo IMAGE_VERSION=$(date -u +'v%y.%m.%d') | tee -a $GITHUB_OUTPUT
+          echo IMAGE_REVISION=$(git rev-parse HEAD) | tee -a $GITHUB_OUTPUT
 
       - name: Build and push default 22.04
         uses: docker/build-push-action@v5
@@ -76,6 +76,33 @@ jobs:
             gitea/runner-images:ubuntu-20.04
             gitea/runner-images:ubuntu-20.04-${{ steps.meta.outputs.IMAGE_VERSION }}
 
+  release-slim:
+    runs-on: ubuntu-latest
+    container:
+      image: gitea/runner-images:ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker BuildX
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Get Meta
+        id: meta
+        run: |
+          echo IMAGE_CREATED=$(date -u +'%Y-%m-%dT%H:%M:%SZ') | tee -a $GITHUB_OUTPUT
+          echo IMAGE_VERSION=$(date -u +'v%y.%m.%d') | tee -a $GITHUB_OUTPUT
+          echo IMAGE_REVISION=$(git rev-parse HEAD) | tee -a $GITHUB_OUTPUT
+
       - name: Build and push slim 22.04
         uses: docker/build-push-action@v5
         with:
@@ -117,6 +144,21 @@ jobs:
             gitea/runner-images:ubuntu-slim-20.04
             gitea/runner-images:ubuntu-slim-20.04-${{ steps.meta.outputs.IMAGE_VERSION }}
 
+  release-full:
+    runs-on: ubuntu-latest
+    container:
+      image: gitea/runner-images:ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Get Meta
+        id: meta
+        run: |
+          echo IMAGE_CREATED=$(date -u +'%Y-%m-%dT%H:%M:%SZ') | tee -a $GITHUB_OUTPUT
+          echo IMAGE_VERSION=$(date -u +'v%y.%m.%d') | tee -a $GITHUB_OUTPUT
+          echo IMAGE_REVISION=$(git rev-parse HEAD) | tee -a $GITHUB_OUTPUT
+
       - name: Install skopeo
         run: |
           apt-get update
@@ -124,11 +166,13 @@ jobs:
 
       - name: Copy full 22.04
         run: |
-          skopeo copy -a docker://ghcr.io/catthehacker/ubuntu:full-22.04 docker://gitea/runner-images:ubuntu-22.04-full
-          skopeo copy -a docker://ghcr.io/catthehacker/ubuntu:full-22.04 docker://gitea/runner-images:ubuntu-22.04-full-${{ steps.meta.outputs.IMAGE_VERSION }}
-          skopeo copy -a docker://ghcr.io/catthehacker/ubuntu:full-22.04 docker://gitea/runner-images:ubuntu-latest-full
-
+          for dest in ubuntu-22.04-full ubuntu-22.04-full-${{ steps.meta.outputs.IMAGE_VERSION }} ubuntu-latest-full; do
+            echo copy catthehacker/ubuntu:full-22.04 -> gitea/runner-images:$dest
+            skopeo copy -a --dest-creds ${{ secrets.DOCKER_USERNAME }}:${{ secrets.DOCKER_PASSWORD }} docker://ghcr.io/catthehacker/ubuntu:full-22.04 docker://gitea/runner-images:$dest
+          done
       - name: Copy full 20.04
         run: |
-          skopeo copy -a docker://ghcr.io/catthehacker/ubuntu:full-20.04 docker://gitea/runner-images:ubuntu-22.04-full
-          skopeo copy -a docker://ghcr.io/catthehacker/ubuntu:full-20.04 docker://gitea/runner-images:ubuntu-22.04-full-${{ steps.meta.outputs.IMAGE_VERSION }}
+          for dest in ubuntu-20.04-full ubuntu-20.04-full-${{ steps.meta.outputs.IMAGE_VERSION }}; do
+            echo copy catthehacker/ubuntu:full-20.04 -> gitea/runner-images:$dest
+            skopeo copy -a --dest-creds ${{ secrets.DOCKER_USERNAME }}:${{ secrets.DOCKER_PASSWORD }} docker://ghcr.io/catthehacker/ubuntu:full-20.04 docker://gitea/runner-images:$dest
+          done
