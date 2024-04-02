@@ -120,9 +120,9 @@ jobs:
             IMAGE_CREATED=${{ steps.meta.outputs.IMAGE_CREATED }}
             IMAGE_REVISION=${{ steps.meta.outputs.IMAGE_REVISION }}
           tags: |
-            gitea/runner-images:ubuntu-slim-22.04
-            gitea/runner-images:ubuntu-slim-22.04-${{ steps.meta.outputs.IMAGE_VERSION }}
-            gitea/runner-images:ubuntu-slim-latest
+            gitea/runner-images:ubuntu-22.04-slim
+            gitea/runner-images:ubuntu-22.04-slim-${{ steps.meta.outputs.IMAGE_VERSION }}
+            gitea/runner-images:ubuntu-latest-slim
 
       - name: Build and push slim 20.04
         uses: docker/build-push-action@v5
@@ -141,8 +141,8 @@ jobs:
             IMAGE_CREATED=${{ steps.meta.outputs.IMAGE_CREATED }}
             IMAGE_REVISION=${{ steps.meta.outputs.IMAGE_REVISION }}
           tags: |
-            gitea/runner-images:ubuntu-slim-20.04
-            gitea/runner-images:ubuntu-slim-20.04-${{ steps.meta.outputs.IMAGE_VERSION }}
+            gitea/runner-images:ubuntu-20.04-slim
+            gitea/runner-images:ubuntu-20.04-slim-${{ steps.meta.outputs.IMAGE_VERSION }}
 
   release-full:
     runs-on: ubuntu-latest
