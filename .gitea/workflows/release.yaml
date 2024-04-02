@@ -124,7 +124,6 @@ jobs:
           file: dockerfiles/ubuntu.dockerfile
           platforms: |
             linux/amd64
-            linux/arm64
           pull: true
           push: true
           no-cache: true
@@ -145,7 +144,6 @@ jobs:
           file: dockerfiles/ubuntu.dockerfile
           platforms: |
             linux/amd64
-            linux/arm64
           pull: true
           push: true
           no-cache: true
