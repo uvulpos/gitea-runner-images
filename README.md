@@ -1,4 +1,7 @@
-# runner-images
+# Runner Images
+
+![docker pulls](https://img.shields.io/docker/pulls/gitea/runner-images?logo=docker&label=pulls)
+![docker stars](https://img.shields.io/docker/stars/gitea/runner-images?logo=docker&label=stars)
 
 Official docker images used by [act_runner](https://gitea.com/gitea/act_runner) to run workflows.
 
@@ -7,11 +10,12 @@ You can find the images on [gitea/runner-images](https://hub.docker.com/r/gitea/
 Currently, we have not chosen to build the image ourselves, as [catthehacker/docker_images](https://github.com/catthehacker/docker_images) has done an excellent job of this.
 We don't need to reinvent the wheel.
 
-So, we build images from `catthehacker/ubuntu:*` or `node:*`, then install additional packages if needed for act_runner to work.
+Images are built from `catthehacker/ubuntu:*` or `node:*`.
+Additional packages will be installed if they are needed by `act_runner`.
 
 ## Images
 
-We provide three kinds of images, "default", "slim" and "full".
+Here are three types of images: "default", "slim", and "full".
 
 ### Default images
 
