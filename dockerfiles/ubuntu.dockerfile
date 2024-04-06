@@ -17,3 +17,11 @@ LABEL org.opencontainers.image.created="${IMAGE_CREATED}" \
       org.opencontainers.image.licenses="MIT" \
       org.opencontainers.image.title="Official Gitea Actions runner images" \
       org.opencontainers.image.description="Official docker images used by act_runner to run workflows."
+
+# TODO: automate architecture detection
+RUN teacpuarchitecture="linux-amd64" 
+RUN tealatestreleasepage="https://gitea.com/api/v1/repos/gitea/tea/releases?draft=false&pre-release=false&limit=5"
+RUN tealatestversion=$(curl --silent ${tealatestreleasepage} | jq -r '.[0].tag_name' 2>&1 | sed -e 's|.*-||' -e 's|^v||')
+
+RUN wget -O /usr/local/bin/tea https://dl.gitea.io/tea/${tealatestversion}/tea-${tealatestversion}-${teacpuarchitecture}
+RUN chmod +x /usr/local/bin/tea
